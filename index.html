@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Report PDF Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Sensor Report Converter</h1>
+                </div>
+                <div class="institute-name">
+                    <h2>Shriram Institute for Industrial Research</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="left-column">
+                <div class="upload-section">
+                    <h2 class="section-title">Upload PDF Report</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📄</div>
+                        <p>Drag & Drop your PDF file here</p>
+                        <p>or</p>
+                        <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                        <button class="btn" id="browseBtn">Browse Files</button>
+                    </div>
+                    <div class="uploaded-file-info" id="fileInfo" style="display: none;">
+                        <p><strong>Selected file:</strong> <span id="fileName"></span></p>
+                        <p><strong>File size:</strong> <span id="fileSize"></span></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instituteName">Institute Name</label>
+                        <input type="text" id="instituteName" value="Shriram Institute for Industrial Research">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="weightLabel">Weight Labeling</label>
+                        <select id="weightLabel">
+                            <option value="standard">Standard</option>
+                            <option value="light">Light</option>
+                            <option value="bold">Bold</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dateFormat">Date Format</label>
+                        <select id="dateFormat">
+                            <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                            <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="temperatureUnit">Temperature Unit</label>
+                        <select id="temperatureUnit">
+                            <option value="celsius">Celsius (°C)</option>
+                            <option value="fahrenheit">Fahrenheit (°F)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-convert" id="convertBtn">Convert Report</button>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="controls-section">
+                    <h2 class="section-title">Data Preview & Controls</h2>
+                    
+                    <div class="sensor-filter">
+                        <div class="form-group">
+                            <label for="sensorFilter">Filter by Sensor</label>
+                            <select id="sensorFilter">
+                                <option value="all">All Sensors</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="statusFilter">Filter by Status</label>
+                            <select id="statusFilter">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="selectAllBtn">Select All</button>
+                        <button class="btn btn-secondary" id="deselectAllBtn">Deselect All</button>
+                        <button class="btn btn-danger" id="deleteSelectedBtn">Delete Selected</button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table" id="sensorDataTable">
+                            <thead>
+                                <tr>
+                                    <th class="checkbox-cell">
+                                        <input type="checkbox" id="selectAllCheckbox">
+                                    </th>
+                                    <th>ID</th>
+                                    <th>Device ID</th>
+                                    <th>Sensor Name</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
+                                    <th>Timestamp</th>
+                                    <th>Humidity</th>
+                                    <th>Temperature</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn" id="exportCsvBtn">Export as CSV</button>
+                        <button class="btn" id="exportPdfBtn">Export as PDF</button>
+                        <button class="btn" id="exportExcelBtn">Export as Excel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Sensor Report Converter &copy; 2025 | Developed for Shriram Institute for Industrial Research</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
